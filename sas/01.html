@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0 ;
+			padding:0;
+			font-size: 0
+		}
+		#box{
+			width: 900px;
+			margin:50px auto;
+
+		}
+		#big{
+			width: 640px;
+			height: 640px;
+			border:2px solid #dedede;
+			overflow: hidden;
+			display: inline-block;
+			cursor: pointer;
+		}
+		#big img{
+			display: none
+		}
+		#small{
+			width: 84px;
+			height: 644px;
+			display: inline-block;
+			vertical-align: top	;
+			margin-left: 20px
+		}
+		#small img{
+			width: 120px;
+			height: 120px;
+			border:2px solid #dedede;
+			margin-bottom: 6px;
+			cursor: pointer;
+		}
+		#big .big_con{
+			display: block
+		}
+		#big:hover{
+			border-color: purple
+		}
+		#small img:hover{
+			border-color: purple
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="big">
+			<img class="big_con" src="01/a.jpg" alt="">
+			<img src="01/b.jpg" alt="">
+			<img src="01/c.jpg" alt="">
+			<img src="01/d.jpg" alt="">
+			<img src="01/e.jpg" alt="">
+		</div>
+		<div id="small">
+			<img class="small_con" src="01/a.jpg" alt="">
+			<img src="01/b.jpg" alt="">
+			<img src="01/c.jpg" alt="">
+			<img src="01/d.jpg" alt="">
+			<img src="01/e.jpg" alt="">
+		</div>
+	</div>
+</body>
+<script>
+	var big=document.getElementById('big').getElementsByTagName('img');
+	var small=document.getElementById('small').getElementsByTagName('img');
+
+	var count=0;
+
+	for(var i=0;i<small.length;i++){
+
+		small[i].index=i;
+
+		small[i].onclick=function(){
+
+			small[count].className="";
+			big[count].className="";
+
+			this.className="small_con";
+			big[this.index].className="big_con";
+
+			count=this.index;
+		}
+	}
+
+
+
+
+	
+</script>
+</html>
