@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		.view{
+			width: 400px;
+			height: 400px;
+			border-radius: 50%;
+			border:2px solid #dedede;
+			margin: 100px auto;
+			position: relative;
+		}
+		.view .kedu{
+			width:10px;
+			height: 4px;
+			background:#dedede;
+			position: absolute;
+			left:50%;
+			margin-left:-5px;
+			top:50%;
+			margin-top:-2px;
+		}	
+
+		.hours,.minites,.second{
+			position: absolute;
+			top:50%;
+			left:50%;
+			margin-top:-3px;
+			height:6px;
+			margin-left:-30px;
+			transform-origin:30px center;
+		}
+		.hours{
+			width:100px;
+			background-color: blue
+		}
+		.minites{
+			width:160px;
+			background-color: green
+		}
+		.second{
+			width: 190px;
+			background-color: red
+		}
+	</style>
+</head>
+<body>
+	<div class="view" id="view">
+		<div class="hours" id="hours"></div>
+		<div class="minites" id="minites"></div>
+		<div class="second" id="second"></div>
+	</div>
+</body>
+<script>
+	//初始化表盘
+	var html="";
+	for(var i=0;i<60;i++){
+
+		if(i%5){
+			html+="<div class='kedu' style='transform:rotate("+i*6+"deg) translate(195px,0)'></div>"
+		}else{
+			html+="<div class='kedu' style='transform:rotate("+i*6+"deg) translate(190px,0);width:20px;margin-left:-10px'></div>"
+		}
+
+	}
+
+	view.innerHTML+=html;
+
+function render(){
+	// 初始化指针角度
+	var d=new Date();
+	var h=d.getHours()%12;
+	var m=d.getMinutes();
+	var s=d.getSeconds();
+
+
+	console.log(h,m,s)
+
+	second.style.transform="rotate("+(s*6-90)+"deg)";
+	minites.style.transform="rotate("+(m*6+s/60*6-90)+"deg)";
+	hours.style.transform="rotate("+(h*30+m/60*30-90)+"deg)";
+
+}
+render();
+
+setInterval(render,1000)
+
+</script>
+</html>
