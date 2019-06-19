@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		select{
+			width: 290px;
+			display: inline-block;
+			height: 50px;
+			background: #dedede;
+			outline: none;
+			border-style: none;
+			font-size: 20px;
+			
+		}
+		div{
+			width: 900px;
+			margin:100px auto;
+		}
+
+	</style>
+</head>
+<body>
+	<div>
+	<select name="" id="pro"></select>
+	<select name="" id="city"></select>
+	<select name="" id="qu"></select>
+	</div>
+</body>
+<script src="area.js"></script>
+<script>
+
+//省
+
+for(var x in area){
+
+	var node=document.createElement("option");
+	node.innerHTML=x;
+
+	pro.appendChild(node)
+
+}
+
+
+
+// 市
+for(var x in area[pro.value][0]){
+
+	var node=document.createElement("option");
+	node.innerHTML=x;
+
+	city.appendChild(node)
+
+}
+
+//区
+for(var x in area[pro.value][0][city.value]){
+	for(var y in area[pro.value][0][city.value][x]){
+		
+	var node=document.createElement("option");
+	node.innerHTML=y;
+	qu.appendChild(node)
+
+
+	// var ass=area[pro.value][0][city.value][x][y];
+	// console.log(ass)
+	// var node=document.createElement("option");
+	// node.innerHTML=ass;
+	// zhen.appendChild(node)
+		}
+	}
+
+
+
+// 改变省份更新市
+
+pro.onchange=function(){
+
+	city.innerHTML="";
+	
+
+	for(var x in area[this.value][0]){
+		
+		var node=document.createElement("option");
+		node.innerHTML=x;
+
+		city.appendChild(node)
+	}
+
+	qu.innerHTML="";
+
+		for(var x in area[this.value][0][city.value]){
+			for(var y in area[this.value][0][city.value][x]){
+			var node=document.createElement("option");
+			node.innerHTML=y;
+
+			qu.appendChild(node)
+			}
+		}
+	}
+
+
+city.onchange=function(){
+
+	qu.innerHTML="";
+
+	for(var x in area[pro.value][0][this.value]){
+		for(var y in area[pro.value][0][this.value][x]){
+		var node=document.createElement("option");
+		node.innerHTML=y;
+
+		qu.appendChild(node)
+
+
+		}
+	}
+}
+
+
+
+
+</script>
+</html>

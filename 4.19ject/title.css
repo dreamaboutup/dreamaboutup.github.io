@@ -1,0 +1,311 @@
+*{
+	margin:0;
+	padding: 0;
+	font-family: "微软雅黑"
+}
+
+a{
+	text-decoration: none;
+	color: #b6b4b6
+}
+
+li{
+	list-style: none;
+}
+
+.line{
+	border-top: 1px solid #b6b4b6;
+	margin-top: 4px;
+}
+
+.line2{
+	border-top: 2px solid #f7f7f7;
+	
+}
+
+.safe{
+	width: 1090px;
+	margin: 0 auto;	
+}
+
+.header{
+	width: 1090px;
+	height: 145px;	
+
+}
+
+.frame{
+	width: 464px;
+	height: 40px;
+	border:1px solid #b6b4b6;
+	border-radius: 10px;
+	display: inline-block;
+	
+}
+
+.frame input{
+	display: inline-block;
+	width: 410px;
+	height: 40px;
+	font-size: 13px;
+	color: #b6b4b6;
+	text-indent: 10px;
+	border: none;
+	outline: 0;	
+	vertical-align: top;
+	border-radius: 10px
+}
+
+.frame a{
+	width: 38px;
+	height: 40px;
+	display: inline-block;
+	vertical-align: top;
+
+}
+
+.frame img{
+	height: 40px;
+	border-left: 1px solid #b6b4b6;
+}
+
+.annotation{
+	width: 464px;
+	height: 35px;
+}
+.annotation a{
+	font-size: 13px;
+	width: 40px;
+	margin-top: 10px
+}
+
+.search{
+	width: 470px;
+	height: 70px;
+	display: inline-block;
+	margin-top: 30px;
+	float: right;
+}
+
+.annotation a:hover{
+	color: #f7b200
+}
+
+.foot a{
+	margin-right: 20px;
+	font-size: 16px;
+}
+
+.foot a:hover{
+	color: purple
+}
+
+
+
+.down{
+	height: 20px;
+	width: 305px;
+	border-left: 1px solid #b6b4b6;
+	border-right: 1px solid #b6b4b6;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+.down .relize{
+	padding: 20px;
+	height: 250px;
+	background: transparent;
+	position: absolute;
+	z-index: 10;
+
+	display: none;
+}
+.relize img{
+	border:1px solid #cccccc;
+	border-radius: 10px;
+}
+ .down:hover .relize{
+	display:block;
+}
+.centre{
+	height: 50px;
+	width: 1090px;
+	margin: 0 auto;
+	padding-top: 20px;
+	font-size: 12px;
+	color: #b6b4b6
+}
+
+.big{
+	
+	width: 1090px;
+	height: 480px;
+	margin: 0 auto 
+}
+.big img{
+	border:1px solid #b6b4b6;
+	
+}
+
+.pic{
+	display: inline-block;
+	width: 80px;
+	line-height: 38px
+}
+
+.big img:hover{
+	border-color: purple
+}
+
+.intro{
+	width: 480px;
+	display: inline-block;
+	vertical-align: top ;
+	float: right;
+}
+.line3{
+	height: 1px;
+	background:#b6b4b6;
+	margin-top: 10px
+}
+.one{
+	font-size: 19px;
+}
+.two{
+	font-size: 14px;
+	color: #b6b4b6;
+	margin-top: 15px
+}
+.three{
+	width: 116px;
+	height: 23px;
+	background:#f7f1e8;
+	color:  #bf9e6b;
+	font-size: 12px;
+	text-align: center;
+	line-height: 23px;
+	margin-top: 15px
+}
+.four,.five,.six{
+	margin-top: 22px;
+	font-size: 14px;
+	color: #666666;
+}
+ .four .price{
+	font-size: 20px;
+	color: #d70c19
+}
+.four span{
+	margin-right: 40px
+}
+.five span{
+	margin-right: 40px;
+	display: inline-block;
+}
+.six span{
+	margin-right: 40px;
+	display: inline-block;
+}
+.box{
+	display: inline-block;
+	width: 69px;
+	height: 35px;
+	border:1px solid #cccccc ;
+	line-height: 35px;
+	text-align: center;
+}
+.small_box{
+	width: 22px;
+	height: 33px;
+	display: inline-block;
+	background-image: url(index_30.png);
+	vertical-align: bottom;
+	margin-right: -21px
+}
+.small_box1{
+	width: 22px;
+	height: 33px;
+	display: inline-block;
+	background-image: url(index_30.png);
+	vertical-align: bottom;
+	margin-right: -15px
+}
+.small_box:hover{
+	background-image: url(index_28.png);
+}
+.small_box1:hover{
+	background-image: url(index_28.png);
+}
+.box:hover{
+	border-color: #523669
+}
+.seven{
+	width: 181px;
+	height: 40px;
+	background: #523669;
+	color: #ffffff;
+	font-size: 20px;
+	text-align: center;
+	line-height: 40px;
+	
+	margin:0 auto;
+	margin-top:35px;
+}
+.last{
+	width: 1090px;
+	margin:0 auto;
+	line-height: 20px;
+	
+}
+.last a{
+	font-size: 13px;
+	color: #333333;
+	vertical-align: top;
+}
+.last img{
+	line-height: 20px;
+	vertical-align: top;
+}
+
+.icon img{
+	border: 1px solid #523669;
+	position: absolute;
+	top: -210px;
+	left: 150px;
+	display: none;
+}
+.buy{
+	position: relative;
+}
+.buy .seven:hover img{
+	display: block;
+}
+
+
+.last div{
+	display: inline-block;
+}
+
+.return p{
+	border:2px solid #b99fce;
+	border-radius: 5px;
+	width: 260px;
+	height: 50px;
+	position: absolute;
+	display: none;
+	left: -120px;
+	top: 30px;
+	font-size: 12px;
+	color: #666666;
+	padding-top: 5px;
+	text-indent:2em;
+}
+.return {
+	position: relative;
+}
+.return:hover  p{
+	display: block;
+}
+#sss{
+	margin-left: 15px
+}
