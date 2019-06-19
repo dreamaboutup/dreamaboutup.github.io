@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 引入地图函数库 -->
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=D6eli4fy5jo5aaVu5SmrcVwbOpkuTsRi"></script>
+	<style>
+		#map{
+			height: 100%;
+		}
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body{
+			height: 100%;
+		}
+		.view{
+			position: fixed;
+			top:20px;
+			left:20px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 地图容器 -->
+	<div id="map"></div>
+
+	<div class="view">
+		
+		<select name="" id="place">
+			<option>酒店</option>
+			<option>游乐场</option>
+			<option>网吧</option>
+			<option>学校</option>
+		</select>
+		<select name="" id="city">
+			<option>北京</option>
+			<option>上海</option>
+			<option>广州</option>
+			<option>深圳</option>
+		</select>
+		<button id="submit">提交</button>
+	</div>
+
+</body>
+<script>
+	function fun(res){
+		// 清除所有覆盖物
+		map.clearOverlays();
+
+		res=res.results;
+
+		// 遍历数据集合
+		
+		res.forEach(function(item){
+
+			// 创建点坐标
+			var point = new BMap.Point( item.location.lng,item.location.lat);
+
+			// 根据点坐标生成标注
+			var marker = new BMap.Marker(point);
+
+			//跳动的动画
+			marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+
+			// 提示窗口信息
+			var opts = {
+				  width : 200,     // 信息窗口宽度
+				  height: 100,     // 信息窗口高度
+				  title : item.name  // 信息窗口标题
+				}
+				var infoWindow = new BMap.InfoWindow("地址："+item.address, opts);  // 创建信息窗口对象 
+				marker.addEventListener("click", function(){          
+					map.openInfoWindow(infoWindow,point); //开启信息窗口
+				});
+
+			// 将标注添加到地图
+			map.addOverlay(marker);
+
+
+		});
+
+		// 设置中心点坐标和地图级别 
+		
+		map.centerAndZoom(new BMap.Point( res[0].location.lat,res[0].location.lng), 12);
+
+	}
+
+
+	submit.onclick=function(){
+
+		var node=document.createElement("script");
+
+		node.src="http://api.map.baidu.com/place/v2/search?query="+place.value+"&tag=%E9%93%B6%E8%A1%8C&region="+city.value+"&output=json&ak=D6eli4fy5jo5aaVu5SmrcVwbOpkuTsRi&callback=fun"
+
+		document.body.appendChild(node);
+
+	}
+
+
+
+
+
+
+
+
+	//创建地图实例对象
+	
+		var map=new BMap.Map("map");
+
+	// 创建点坐标
+	
+		var point = new BMap.Point( 113.746439,34.729797);
+
+	// 初始化地图，设置中心点坐标和地图级别 
+	
+	map.centerAndZoom(point, 15);
+
+
+	// 比例尺控件
+		
+		var top_right_control=new BMap.ScaleControl({anchor:BMAP_ANCHOR_TOP_RIGHT})
+
+	// 地图添加控件
+		
+		map.addControl(top_right_control)
+
+
+	map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+	map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+
+	// 设置标注
+	
+		var marker = new BMap.Marker(point); 
+		
+		marker.addEventListener("click",function(){
+			alert("点我干啥")
+		})
+
+	map.addOverlay(marker);
+
+</script>
+</html>
