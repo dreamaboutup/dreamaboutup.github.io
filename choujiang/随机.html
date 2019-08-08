@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0; 
+		}
+		#view{
+			width: 800px;
+			margin:0 auto;
+			margin-top: 100px;
+			position: relative;
+		}
+		#win{
+			width: 400px;
+			height: 200px;
+			border:2px solid #666;
+			
+			margin:0 auto;
+			margin-top: 70px;
+			border-radius: 10px;
+		}
+		#suiji{
+			width: 400px;
+			height: 80px;
+			border:2px solid red;
+			position: relative;
+			left: 50%;
+			left:200px;
+			border-radius: 10px;
+		}
+		#view span{
+			display: inline-block;
+			width: 100px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			margin-top:5px;
+			background:pink;
+			cursor: pointer; 
+		}
+		#start{
+			position: absolute;
+			left: 200px;
+			border-radius: 10px;
+		}
+		#end{
+			position: absolute;
+			left: 500px;
+			border-radius: 10px;
+		}
+		#suiji div{
+			line-height: 80px;
+			left:50%;
+			margin-left:-45px;
+			position: absolute;
+			font-size: 40px;
+			display: none
+		}
+		#suiji .con{
+			display: block;
+		}
+		#win p{
+			text-align:center;
+			color: red
+		}
+	</style>
+</head>
+<body>
+	<div id="view">
+		<div id="suiji"></div>
+		<span id="start">开始</span>
+		<span id="end">结束</span>
+		<div id="win">&nbsp;&nbsp;中奖名单：</div>
+	</div>
+</body>
+<script src="homework.js"></script>
+<script>
+	var sss=0;
+	for(var i=0;i<people.length;i++){
+			node=document.createElement("div");
+			node.innerHTML=people[i];
+			node.index=[i];
+			suiji.appendChild(node);
+		}
+
+	var allowList=["谢永帅","Veblen"]	
+	function random(a,b){
+    	return Math.floor(Math.random()*(b-a+1))+a;
+	}
+	suiji.children[0].className="con";
+	var count=0;
+		flag=true;
+	start.onclick=function(){
+
+		var ran=random(0,allowList.length-1);
+    	console.log(allowList[ran]);
+    	var t=100;
+		flag=true;
+
+	function fun(){
+
+		suiji.children[count].className="";
+		count++;
+		if(count>suiji.children.length-1){
+			count=0;
+			}
+		suiji.children[count].className="con";
+			if(flag){
+
+				if(t>50){
+					t-=5;
+					}
+				}else{
+				if(t<=500){
+					t+=20;
+					}
+				}
+
+			var allowFlag=suiji.children[count].innerHTML==allowList[ran];
+
+		if(t>500&&allowFlag){
+				// console.log(suiji.children[count].innerHTML);
+				
+				for(var j=0;j<allowList.length;j++){
+					node=document.createElement("p");
+					node.innerHTML=suiji.children[count].innerHTML;
+					win.appendChild(node);
+					sss++;
+					if(sss>=3){
+						start.style.display="none";
+						alert("次数用完了")
+					}
+					console.log(sss)
+					break;
+				}
+
+
+			}else{
+				setTimeout(fun,t)
+				}
+
+    		}
+			fun();	
+		}
+
+
+
+
+	end.onclick=function(){
+    flag=false;
+
+	}	
+	
+
+
+</script>
+</html>
