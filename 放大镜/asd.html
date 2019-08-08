@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0 ;
+            padding: 0;
+            font-size: 0
+        }
+        #box{
+            position: relative;
+        }
+        #show{
+            width: 960px;
+			height: 540px;
+			border:2px solid #dedede;
+			overflow: hidden;
+			cursor: pointer;
+            display: inline-block
+        }
+        #show img{
+            display: none;
+            width: 960px;
+			height: 540px;
+        }
+        #show .show_con{
+            display: block;
+        }
+        #small{
+            width: 966px;
+			height: 108px;
+            margin-top: 2px;
+        }
+        #small img{
+            width: 134px;
+            border:1px solid #dedede;
+            margin-right:2px;
+        }
+
+        #fangda{
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            display: none;
+            position: absolute;
+            left: 970px;
+            top:0;
+            border:2px solid red;
+
+        }
+       #fangda img{
+           position: absolute;
+           top:0;
+           left:0
+       }
+       
+       #asa{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top:0;
+        left:0;
+        border:2px dashed #666;   
+        border-radius: 10px;
+        z-index: 10;
+        font-size: 30px;
+        text-align: center;
+        line-height: 100px;
+        color: rgba(255,0,0,0.3);
+        /* display: none */
+       }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="show">
+            <div id="asa">+</div>
+            <img class="show_con" src="images/a.jpg" alt="">
+            <img src="images/b.jpg" alt="">
+            <img src="images/c.jpg" alt="">
+            <img src="images/d.jpg" alt="">
+            <img src="images/e.jpg" alt="">
+            <img src="images/f.jpg" alt="">
+            <img src="images/g.jpg" alt="">
+        </div>
+        <div id="fangda">
+                <img src="images/a.jpg" alt="">
+                
+        </div>
+        <div id="small">
+            <img class="small_con" src="images/a.jpg" alt="">
+            <img src="images/b.jpg" alt="">
+            <img src="images/c.jpg" alt="">
+            <img src="images/d.jpg" alt="">
+            <img src="images/e.jpg" alt="">
+            <img src="images/f.jpg" alt="">
+            <img src="images/g.jpg" alt="">
+        </div>
+    </div> 
+       
+</body>
+<script>
+    var show1=document.getElementById('show').getElementsByTagName('img');
+	var small=document.getElementById('small').getElementsByTagName('img');
+    
+    
+	var count=0;
+
+	for(var i=0;i<small.length;i++){
+
+		small[i].index=i;
+
+		small[i].onclick=function(){
+
+			small[count].className="";
+            show1[count].className="";
+            small[count].style.border="1px solid #dedede"
+            
+
+            this.className="small_con";
+            this.style.border="1px solid purple"
+            show1[this.index].className="show_con";
+            
+            fangda.children[0].src=this.src;
+			count=this.index;
+		}
+    }
+ 
+    show.onmousemove=function(e){
+
+        var x=e.clientX;
+        var y=e.clientY;
+       
+
+        if(x<400/2/2){
+            x=400/2/2;
+        }
+        if(x>960-400/2/2){
+            x=960-400/2/2
+        }
+
+
+        if(y<400/2/2){
+            y=400/2/2;
+        }       
+        if(y>540-400/2/2){
+            y=540-400/2/2
+        }
+
+        fangda.children[0].style.left=-x*2+200+"px";
+        fangda.children[0].style.top=-y*2+200+"px";
+       
+        asa.style.left=x-50+"px";
+
+        asa.style.top=y-50+"px";
+
+
+    }
+        show.onmouseover=function(){
+            asa.style.display="block"
+            fangda.style.display="block"
+
+        }
+        show.onmouseout=function(){
+            asa.style.display="none"
+            fangda.style.display="none"
+        }
+
+
+</script>
+</html>
