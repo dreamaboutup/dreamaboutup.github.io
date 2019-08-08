@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+	.view{
+		width:601px;
+		height: 601px;
+		background: url(images/bg2.png);
+		z-index: 5;
+		margin-top: 77px;
+		margin-left: 26px;
+		position: absolute;
+	}
+	.dish{
+		width:512px;
+		height: 512px;
+		background: url(images/bg.png);
+		background-size:100% 100%;
+		position: absolute;
+		left:50%;
+		top:50%;
+		transform: translate(-50%,-50%) rotate(0deg);
+	}
+	.arrow{
+		position: absolute;
+		left:50%;
+		top:50%;
+		transform: translate(-50%,-50%);
+	}
+	.box{
+		width: 1101px;
+		height: 671px;
+		margin:100px auto;
+		position: relative;
+		background-image: url(images/zy_53_1558680662.jpg);
+		background-repeat: no-repeat;
+	}
+	.pic1{
+		position: absolute;
+		top: 671px
+	}
+	.pic2{
+		position: absolute;
+		top: 671px;
+		left: 497px;
+		width: 603px;
+		height: 108px;
+	}
+	.pic3{
+		position: absolute;
+		left: 600px
+	}
+	#content{
+		width: 300px;
+		height: 245px;
+		position: absolute;
+		bottom: 95px;
+		right: 117px
+	}
+	#content p{
+		text-align: center;
+		font-size: 20px;
+		padding: 20px 5px;
+		color:#d70c19;
+		border-bottom: 1px dashed red 
+	}
+	#asd{
+		width: 300px;
+		height: 108px;
+		position: absolute;
+		bottom:-107px;
+		left: 680px;
+	}
+	#asd p{
+		text-align: center;
+		font-size: 30px;
+		padding: 20px 5px;
+		color:#d70c19;
+		border-top: 1px solid red 
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<div class="view">
+			<div class="dish" id="dish"></div>
+			<img src="images/bg3.png" id="arrow" class="arrow" alt="">
+		</div>
+		<img class="pic1" src="images/zy_55_1558680662.jpg" alt="">
+		<img class="pic2" src="images/zy_56_1558680663.jpg" alt="">
+		<img class="pic3" src="images/zy_54_1558680662.jpg" alt="">
+		<div id="content">	
+		</div>
+		<div id="asd">
+			<p>共有3次机会</p>
+		</div>
+	</div>
+	
+</body>
+<script>
+	//包含可以抽到的商品
+	var arr=[{
+		name:"100元红包",
+		angle:[30,90]
+	},{
+		name:"50元红包",
+		angle:[150,210]
+	},{
+		name:"美旅26寸拉杆箱",
+		angle:[90,150]
+	},{
+		name:"500元红包",
+		angle:[270,330]
+	}]
+	// 定义随机数方法 开区间
+	function random1(a,b){
+		return Math.floor(Math.random()*(b-a-1))+a+1
+	}
+	// 闭区间
+	function random(a,b){
+		return Math.floor(Math.random()*(b-a+1))+a
+	}
+
+	var x=0;
+	var flagg=true;
+	var cishu=0;
+	function fun(){
+		if(flagg){
+			flagg=false;
+		// 随机数组元素索引
+		var ran=random(0,arr.length-1);
+		// 存储最终抽到的商品
+		var name=arr[ran].name;
+		// 停止的角度值
+		var angle=random1(arr[ran].angle[0],arr[ran].angle[1])
+
+		
+		var count=0.1;
+
+		var flag=false;
+
+		// 3秒之后减速
+		setTimeout(function(){
+			flag=true;
+		},5000)
+
+		var timer=setInterval(function(){			
+			if(flag){//控制加减速
+				
+				if(count>1.5){
+					count-=0.05
+				}else{
+					// 停止计时器的条件
+					if(parseInt(x)==angle){
+						//拼接字符串插入P标签
+						content.innerHTML+="<p>恭喜你抽到"+name+"</p>";
+						asd.innerHTML="<p>还有"+(2-cishu)+"次机会</p>";
+						cishu++;
+						
+						if(cishu>=3){
+							asd.innerHTML=("<p>没得机会了</p>");
+							arrow.onclick=null;
+						}
+						
+						flagg=true;
+						// 重置变量，方便下一轮抽奖
+						count=0.1;
+						flag=false;
+						// 停止计时器
+						clearInterval(timer);
+						return false;
+					}
+				}
+			}else{
+				// count<10加速旋转
+				if(count<10){
+					count+=0.05;
+				}
+			}
+
+			x+=count;
+
+			x%=360;
+
+			dish.style.transform="translate(-50%,-50%) rotate("+x+"deg)";
+
+		},16.7)
+	}
+}
+arrow.onclick=fun;
+
+</script>
+</html>
