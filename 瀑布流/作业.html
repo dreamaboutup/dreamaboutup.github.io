@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#view{
+			width:1500px;
+			margin:0 auto;
+			position: relative;
+		}
+		
+		#view img{
+			width:236px;		
+		}
+		#view p{
+			width: 236px;
+			font-size:10px;
+			color: grey;
+			text-indent: 2em
+			/*background: #cff0ef*/
+		}
+		#view div{
+			position: absolute;
+			width:236px;	
+		}
+		body{
+			background: #eaf4f4
+		}
+	</style>
+</head>
+<body>
+	
+	<div id="view">
+		
+	</div>
+</body>
+<script src="homework.js"></script>
+<script>
+var view=document.getElementById('view');
+// console.log(view)
+var arr=[{col:1,h:0},{col:2,h:0},{col:3,h:0},{col:4,h:0},{col:5,h:0},{col:6,h:0}];//定义列
+
+
+	for(var i=0;i<data.length;i++){
+
+	// 知道插入那一列（那一列高度最小）
+	arr.sort(function(a,b){
+		if(a.h>b.h){
+			return 1;
+		}else{
+			return -1;
+		}
+	});
+
+	var box=document.createElement('div');
+	var node=document.createElement("img");
+	var wor=document.createElement("p")//创建标签
+	
+	node.src=data[i].img_url;//添加图片
+	wor.innerHTML=data[i].title;//添加文本内容
+
+	//定位div位置
+	box.style.left=(arr[0].col-1)*246+"px";
+	box.style.top=arr[0].h+"px";
+
+	box.appendChild(node);
+	box.appendChild(wor);
+	view.appendChild(box);//结构
+
+
+	//获取p标签的高度
+	var num=Number(getComputedStyle(wor,null).height.split("p")[0]);
+	// console.log(s);
+
+	//整个div的高度
+	arr[0].h+= Number(data[i].img_url.split("?")[1].split("x")[1])+num+20;
+
+}
+
+</script>
+</html>
